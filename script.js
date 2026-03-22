@@ -37,7 +37,7 @@ function operate(num1, operator, num2) {
         (operator === "x") ? multiply(num1, num2):
         (operator === "÷") ? divide(num1, num2):
         "";
-    return answer;
+    return parseFloat(parseFloat(answer).toFixed(15));
 }
 
 function handleOperator(operator) {
