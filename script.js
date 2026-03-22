@@ -65,6 +65,17 @@ function handleOperator(operator) {
     }
 }
 
+function handleDecimal() {
+    if (calculator.currentInput) {
+        if (!calculator.currentInput.includes(".")) {
+            calculator.currentInput += ".";
+        }
+    } else {
+        calculator.currentInput += "0.";
+    }
+    currentDisplay.textContent = calculator.currentInput;
+}
+
 function clearDisplay() {
     calculator.firstNum = null;
     calculator.operator = null
@@ -97,8 +108,10 @@ function handleNumberInput(num) {
 }
 
 digitButtons.addEventListener("click", (e) => {
-    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent)) return;
-    handleNumberInput(e.target.textContent);
+    if (e.target.nodeName !== "BUTTON") return;
+    NUMS.includes(e.target.textContent) ? 
+        handleNumberInput(e.target.textContent):
+        handleDecimal();
 });
 
 operatorButtons.addEventListener("click", (e) => {

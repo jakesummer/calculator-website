@@ -114,3 +114,7 @@ button {
     height: 88.2px;
     font-size: 45px;
 }
+
+#decimal-button {
+    font-size: 60px;
+}
