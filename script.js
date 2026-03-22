@@ -15,7 +15,7 @@ let calculator = {
 };
 
 function add(num1, num2) {
-    return parseInt(num1) + parseInt(num2);
+    return parseFloat(num1) + parseFloat(num2);
 }
 
 function subtract(num1, num2) {
@@ -131,10 +131,11 @@ document.addEventListener("keydown", (e) => {
     if (NUMS.includes(key)) handleNumberInput(key);
     else if (OPERATORS.includes(key)) handleOperator(key);
     else if (key === "*") handleOperator("x");
-    else if(key === "Enter") handleOperator("=");
+    else if (key === "Enter") handleOperator("=");
     else if (key === "/") handleOperator("÷");
     else if (key === "Backspace") deleteNum();
     else if (key === "c") clearDisplay();
+    else if (key === ".") handleDecimal();
 });
 
 // Remove focus from buttons after pressing them; without this pressing the enter key presses the button instead of acting as an "=""
