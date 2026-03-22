@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Unica One", Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -9,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #c8c8c8;
 }
 
 .calculator,
@@ -32,16 +36,27 @@ body {
 
 .displays {
     background-color: #20262E;
+    color: #E9E8E8;
+    font-weight: bold;
     width: 438.5px;
     height: 150px;
-    text-align: end;
+}
+
+.equation-display,
+.current-display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 25px;
 }
 
 .equation-display {
+    font-size: 35px;
     height: 40%;
 }
 
 .current-display {
+    font-size: 50px;
     height: 60%;
 }
 
