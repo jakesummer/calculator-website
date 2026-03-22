@@ -13,8 +13,7 @@ body {
 
 .calculator,
 .buttons,
-.digit-buttons,
-.right,
+.left-buttons,
 .operator-buttons {
     display: flex;
     gap: 9px;
@@ -48,38 +47,35 @@ body {
 
 .buttons {
     align-items: flex-start;
-    width: 438.5px;
+    justify-content: space-around;
 }
 
 button {
     border-radius: 25px;
     border: none;
     background-color: #d6719b;
+    color: #E9E8E8;
+    font-size: 35px;
 }
 
-.digit-buttons {
+.left-buttons {
     flex-wrap: wrap;
-    justify-content: center;
-    width: 357.5px;
+    width: 355.5px;
 }
 
-.digit-buttons button {
+.left-buttons button {
     width: 112.5px;
     height: 112.5px;
 }
 
-#zero {
-    width: 357.5px;
-}
-
-.right {
+.operator-buttons {
     flex-direction: column;
-    width: 75px;
+    height: 477px;
 }
 
-.right button {
-    width: 72px;
-    height: 72px;
+.operator-buttons button {
+    width: 88.2px;
+    height: 88.2px;
 }
 
 .operator-buttons {

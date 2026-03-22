@@ -1,6 +1,8 @@
+const NUMS = "0123456789"
+
 const equationDisplay = document.querySelector(".equation-display");
 const currentDisplay = document.querySelector(".current-display");
-const digitButtons = document.querySelector(".digit-buttons");
+const digitButtons = document.querySelector(".left-buttons");
 const operatorButtons = document.querySelector(".operator-buttons");
 const clearButton = document.querySelector("#clear-button");
 
@@ -62,7 +64,7 @@ function handleOperator(operator) {
 
 
 digitButtons.addEventListener("click", (e) => {
-    if (e.target.nodeName !== "BUTTON") return;
+    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent)) return;
     let digit = e.target.textContent;
     calculator.currentInput += digit;
     currentDisplay.textContent = calculator.currentInput;
