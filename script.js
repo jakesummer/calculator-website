@@ -3,7 +3,7 @@ const OPERATORS = "+-x÷="
 
 const equationDisplay = document.querySelector(".equation-display");
 const currentDisplay = document.querySelector(".current-display");
-const digitButtons = document.querySelector(".left-buttons");
+const digitButtons = document.querySelector(".digit-buttons");
 const operatorButtons = document.querySelector(".operator-buttons");
 const clearButton = document.querySelector("#clear-button");
 const deleteButton = document.querySelector("#delete-button");
