@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displays {
+    background-color: #20262E;
+    width: 412.5px;
+    height: 130px;
+    text-align: end;
+}
+
+.equation-display {
+    height: 40%;
+}
+
+.current-display {
+    height: 60%;
+}
+
+.buttons {
+    display: flex;
+    align-items: flex-start;
+    width: 412.5;
+    height: 450px;
+}
+
+button {
+    border-radius: 0;
+    border-width: 1px;
+}
+
+.digit-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 337.5px;
+}
+
+.digit-buttons button {
+    width: 112.5px;
+    height: 112.5px;
+}
+
+#zero {
+    width: 337.5px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 75px;
+}
+
+.right button {
+    width: 75px;
+    height: 75px;
+}
