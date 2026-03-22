@@ -1,3 +1,8 @@
+const equationDisplay = document.querySelector(".equation-display");
+const currentDisplay = document.querySelector(".current-display");
+const digitButtons = document.querySelector(".digit-buttons");
+const operatorButtons = document.querySelector(".operator-buttons");
+
 let calculator = {
     firstNum: null,
     operator: null,
@@ -33,27 +38,32 @@ function operate(num1, operator, num2) {
 function handleOperator(operator) {
     if (operator === "=") {
         if (calculator.firstNum && calculator.operator && calculator.currentInput) {
-            operate(calculator.firstNum, calculator.operator, calculator.currentInput);
+            let result = operate(calculator.firstNum, calculator.operator, calculator.currentInput);
+
+            calculator.currentInput = result;
             calculator.firstNum = null;
             calculator.operator = null;
-            calculator.currentInput = "";
+            
+            equationDisplay.textContent = "";
+            currentDisplay.textContent = calculator.currentInput;
         }
     } else {
         if (calculator.currentInput && !calculator.operator && !calculator.firstNum){
             calculator.firstNum = calculator.currentInput;
             calculator.operator = operator;
             calculator.currentInput = "";
+
+            equationDisplay.textContent = `${calculator.firstNum} ${calculator.operator}`;
+            currentDisplay.textContent = "";
         }
     }
 }
-
-const digitButtons = document.querySelector(".digit-buttons");
-const operatorButtons = document.querySelector(".operator-buttons");
 
 digitButtons.addEventListener("click", (e) => {
     if (e.target.nodeName !== "BUTTON") return;
     let digit = e.target.textContent;
     calculator.currentInput += digit;
+    currentDisplay.textContent = calculator.currentInput;
 })
 
 operatorButtons.addEventListener("click", (e) => {
