@@ -109,7 +109,7 @@ function deleteNum() {
 }
 
 function cutOffLongNumber(num) {
-    if (!num) return;
+    if (num == null) return;
 
     num = num.toString();
     while (num.length > 15) { // 15 is the longest a number can be before it starts to go off the display area
@@ -152,7 +152,7 @@ document.addEventListener("keydown", (e) => {
     else if (key === ".") handleDecimal();
 });
 
-// Remove focus from buttons after pressing them; without this pressing the enter key presses the button instead of acting as an "=""
+// Remove focus from buttons after pressing them; without this pressing the enter key presses the button instead of acting as an "="
 document.addEventListener("click", (e) => {
     if (e.target.nodeName === "BUTTON") {
         e.target.blur();
