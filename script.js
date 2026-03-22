@@ -5,6 +5,7 @@ const currentDisplay = document.querySelector(".current-display");
 const digitButtons = document.querySelector(".left-buttons");
 const operatorButtons = document.querySelector(".operator-buttons");
 const clearButton = document.querySelector("#clear-button");
+const deleteButton = document.querySelector("#delete-button");
 
 let calculator = {
     firstNum: null,
@@ -62,7 +63,6 @@ function handleOperator(operator) {
     }
 }
 
-
 digitButtons.addEventListener("click", (e) => {
     if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent)) return;
     let digit = e.target.textContent;
@@ -82,4 +82,9 @@ clearButton.addEventListener("click", () => {
     calculator.currentInput = "";
     equationDisplay.textContent = "";
     currentDisplay.textContent = "";
+})
+
+deleteButton.addEventListener("click", () => {
+    calculator.currentInput = calculator.currentInput.slice(0, calculator.currentInput.length - 1);
+    currentDisplay.textContent = calculator.currentInput;
 })
