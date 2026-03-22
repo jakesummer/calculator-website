@@ -7,15 +7,34 @@
 body {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
+.calculator,
+.buttons,
+.digit-buttons,
+.right,
+.operator-buttons {
+    display: flex;
+    gap: 9px;
+}
+
+.calculator {
+    background-color: #913175;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 488.5px;
+    height: 714px;
+    border-radius: 30px;
+}
+
 .displays {
     background-color: #20262E;
-    width: 412.5px;
-    height: 130px;
+    width: 438.5px;
+    height: 150px;
     text-align: end;
 }
 
@@ -28,22 +47,20 @@ body {
 }
 
 .buttons {
-    display: flex;
     align-items: flex-start;
-    width: 412.5;
-    height: 450px;
+    width: 438.5px;
 }
 
 button {
-    border-radius: 0;
-    border-width: 1px;
+    border-radius: 25px;
+    border: none;
+    background-color: #d6719b;
 }
 
 .digit-buttons {
-    display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 337.5px;
+    width: 357.5px;
 }
 
 .digit-buttons button {
@@ -52,16 +69,19 @@ button {
 }
 
 #zero {
-    width: 337.5px;
+    width: 357.5px;
 }
 
 .right {
-    display: flex;
     flex-direction: column;
     width: 75px;
 }
 
 .right button {
-    width: 75px;
-    height: 75px;
+    width: 72px;
+    height: 72px;
+}
+
+.operator-buttons {
+    flex-direction: column;
 }
