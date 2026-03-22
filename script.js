@@ -1,4 +1,5 @@
 const NUMS = "0123456789"
+const OPERATORS = "+-x÷="
 
 const equationDisplay = document.querySelector(".equation-display");
 const currentDisplay = document.querySelector(".current-display");
@@ -30,7 +31,7 @@ function divide(num1, num2) {
 }
 
 function operate(num1, operator, num2) {
-    answer = 
+    let answer = 
         (operator === "+") ? add(num1, num2):
         (operator === "-") ? subtract(num1, num2):
         (operator === "x") ? multiply(num1, num2):
@@ -64,6 +65,19 @@ function handleOperator(operator) {
     }
 }
 
+function clearDisplay() {
+    calculator.firstNum = null;
+    calculator.operator = null
+    calculator.currentInput = "";
+    equationDisplay.textContent = "";
+    currentDisplay.textContent = "";
+}
+
+function deleteNum() {
+    calculator.currentInput = calculator.currentInput.slice(0, calculator.currentInput.length - 1);
+    currentDisplay.textContent = calculator.currentInput;
+}
+
 function cutOffLongNumber(num) {
     if (!num) return;
 
@@ -75,28 +89,44 @@ function cutOffLongNumber(num) {
     return num;
 }
 
-digitButtons.addEventListener("click", (e) => {
-    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent) || calculator.currentInput.length >= 15) return;
-    let digit = e.target.textContent;
-    calculator.currentInput += digit;
+function handleNumberInput(num) {
+    if (calculator.currentInput.length >= 15) return
+
+    calculator.currentInput += num;
     currentDisplay.textContent = calculator.currentInput;
-})
+}
+
+digitButtons.addEventListener("click", (e) => {
+    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent)) return;
+    handleNumberInput(e.target.textContent);
+});
 
 operatorButtons.addEventListener("click", (e) => {
     if (e.target.nodeName !== "BUTTON") return;
     let operator = e.target.textContent;
     handleOperator(operator);
-})
+});
 
 clearButton.addEventListener("click", () => {
-    calculator.firstNum = null;
-    calculator.operator = null
-    calculator.currentInput = "";
-    equationDisplay.textContent = "";
-    currentDisplay.textContent = "";
-})
+    clearDisplay();
+});
 
-deleteButton.addEventListener("click", () => {
-    calculator.currentInput = calculator.currentInput.slice(0, calculator.currentInput.length - 1);
-    currentDisplay.textContent = calculator.currentInput;
-})
+deleteButton.addEventListener("click", () => deleteNum());
+
+document.addEventListener("keydown", (e) => {
+    const key = e.key;
+    if (NUMS.includes(key)) handleNumberInput(key);
+    else if (OPERATORS.includes(key)) handleOperator(key);
+    else if (key === "*") handleOperator("x");
+    else if(key === "Enter") handleOperator("=");
+    else if (key === "/") handleOperator("÷");
+    else if (key === "Backspace") deleteNum();
+    else if (key === "c") clearDisplay();
+});
+
+// Remove focus from buttons after pressing them; without this pressing the enter key presses the button instead of acting as an "=""
+document.addEventListener("click", (e) => {
+    if (e.target.nodeName === "BUTTON") {
+        e.target.blur();
+    }
+});
