@@ -54,13 +54,15 @@ function handleOperator(operator) {
             currentDisplay.textContent = calculator.currentInput;
         }
     } else {
-        if (calculator.currentInput && !calculator.operator && !calculator.firstNum){
+        if (calculator.currentInput && !calculator.operator && !calculator.firstNum && calculator.currentInput !== "-"){
             calculator.firstNum = calculator.currentInput;
             calculator.operator = operator;
             calculator.currentInput = "";
 
             equationDisplay.textContent = `${calculator.firstNum} ${calculator.operator}`;
             currentDisplay.textContent = "";
+        } else if (operator === "-"){
+            handleSignChange();
         }
     }
 }
@@ -72,6 +74,23 @@ function handleDecimal() {
         }
     } else {
         calculator.currentInput += "0.";
+    }
+    currentDisplay.textContent = calculator.currentInput;
+}
+
+function handleNumberInput(num) {
+    if (calculator.currentInput.length >= 15) return
+
+    calculator.currentInput += num;
+    currentDisplay.textContent = calculator.currentInput;
+}
+
+function handleSignChange() {
+    if (calculator.currentInput && calculator.currentInput !== "-") {
+        calculator.currentInput *= -1;
+    } else {
+        if (calculator.currentInput === "-") calculator.currentInput = "";
+        else calculator.currentInput = "-"
     }
     currentDisplay.textContent = calculator.currentInput;
 }
@@ -100,18 +119,13 @@ function cutOffLongNumber(num) {
     return num;
 }
 
-function handleNumberInput(num) {
-    if (calculator.currentInput.length >= 15) return
-
-    calculator.currentInput += num;
-    currentDisplay.textContent = calculator.currentInput;
-}
 
 digitButtons.addEventListener("click", (e) => {
     if (e.target.nodeName !== "BUTTON") return;
     NUMS.includes(e.target.textContent) ? 
         handleNumberInput(e.target.textContent):
-        handleDecimal();
+        (e.target.textContent === ".")? handleDecimal() :
+        handleSignChange();
 });
 
 operatorButtons.addEventListener("click", (e) => {
