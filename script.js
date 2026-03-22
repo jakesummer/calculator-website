@@ -43,6 +43,7 @@ function handleOperator(operator) {
     if (operator === "=") {
         if (calculator.firstNum && calculator.operator && calculator.currentInput) {
             let result = operate(calculator.firstNum, calculator.operator, calculator.currentInput);
+            result = cutOffLongNumber(result);
 
             calculator.currentInput = result;
             calculator.firstNum = null;
@@ -63,8 +64,19 @@ function handleOperator(operator) {
     }
 }
 
+function cutOffLongNumber(num) {
+    if (!num) return;
+
+    num = num.toString();
+    while (num.length > 15) { // 15 is the longest a number can be before it starts to go off the display area
+        num = num.slice(0, num.length - 1);
+    }
+
+    return num;
+}
+
 digitButtons.addEventListener("click", (e) => {
-    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent)) return;
+    if (e.target.nodeName !== "BUTTON" || !NUMS.includes(e.target.textContent) || calculator.currentInput.length >= 15) return;
     let digit = e.target.textContent;
     calculator.currentInput += digit;
     currentDisplay.textContent = calculator.currentInput;
