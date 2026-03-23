@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Unica One", Arial, Helvetica, sans-serif;
+    border-radius: 25px;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #c8c8c8;
+    background-color: #434e60;
 }
 
 .bottom-buttons,
@@ -25,18 +26,17 @@ body {
 }
 
 .calculator {
-    background-color: #913175;
+    background-color: #2D3142;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
     width: 498.5px;
     height: 800px;
-    border-radius: 30px;
 }
 
 .displays {
-    background-color: #20262E;
+    background-color: #434e60;
     color: #E9E8E8;
     font-weight: bold;
     width: 438.5px;
@@ -64,13 +64,10 @@ body {
 .buttons {
     flex-direction: column;
     align-items: flex-start;
-    /* justify-content: space-around; */
 }
 
 button {
-    border-radius: 25px;
     border: none;
-    background-color: #d6719b;
     color: #E9E8E8;
     font-size: 35px;
 }
@@ -86,6 +83,7 @@ button {
 }
 
 .digit-buttons button {
+    background-color: #434e60;
     width: 112.5px;
     height: 112.5px;
 }
@@ -98,10 +96,7 @@ button {
 .operator-buttons button {
     width: 88.2px;
     height: 88.2px;
-}
-
-.operator-buttons {
-    flex-direction: column;
+    background-color: #D64045;
 }
 
 .top-buttons {
@@ -110,9 +105,14 @@ button {
 }
 
 .top-buttons button {
-    width: 221.35px;
+    width: 209.7px;
     height: 88.2px;
     font-size: 45px;
+    background-color: #d64045;
+}
+
+#clear-button {
+    width: 234px;
 }
 
 #decimal-button {
